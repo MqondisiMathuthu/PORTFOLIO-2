@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mqondisi Mathuthu — Network Engineer</title>
 <meta name="description" content="CCNP Service Provider network engineer. BGP, OSPF, MPLS, Fortinet, and network automation with Python and Ansible.">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<!-- Open Graph (LinkedIn, WhatsApp, Slack, Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mqondisi Mathuthu — Network Engineer">
+<meta property="og:description" content="CCNP Service Provider engineer. BGP, OSPF, MPLS, VPNv4, EVPN, Fortinet, and network automation with Python and Ansible.">
+<meta property="og:image" content="https://mqondisiproud.netlify.app/og-image.png">
+<meta property="og:url" content="https://mqondisiproud.netlify.app/">
+<meta property="og:site_name" content="Mqondisi Mathuthu">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mqondisi Mathuthu — Network Engineer">
+<meta name="twitter:description" content="CCNP Service Provider engineer. BGP, OSPF, MPLS, VPNv4, EVPN, Fortinet, and network automation.">
+<meta name="twitter:image" content="https://mqondisiproud.netlify.app/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -196,8 +213,8 @@
       <div class="proj">
         <p class="type">Building an ISP from scratch</p>
         <h3>Multi-vendor Service Provider lab</h3>
-        <p>An end-to-end virtualised ISP: Cisco MPLS core, MikroTik access layer, and FortiGate-managed security, built to mirror a real carrier topology.</p>
-        <p class="result"><span class="stat-dot progress"></span>in progress — write-up coming</p>
+        <p>An end-to-end virtualised ISP built to mirror a real carrier: a Cisco MPLS/LDP core running OSPF and iBGP with route-reflectors, a MikroTik access layer for customer aggregation, and FortiGate handling edge security and IPsec. The goal is a single topology where a packet can be traced from a customer CPE, through the access layer, across the labelled core, and out an upstream peering edge.</p>
+        <p class="result"><span class="stat-dot progress"></span>in progress — core + access up, write-up coming</p>
       </div>
       <div class="proj">
         <p class="type">MPLS · Ansible</p>
@@ -220,8 +237,8 @@
       <div class="proj">
         <p class="type">Lab · EVPN</p>
         <h3>EVPN/VXLAN home lab</h3>
-        <p>A multi-vendor EVPN/VXLAN fabric with FRR and VyOS, built to go deeper on type-2/3/5 routes and MAC-VRF behaviour beyond the day job.</p>
-        <p class="result"><span class="stat-dot progress"></span>in progress — write-up coming</p>
+        <p>A multi-vendor EVPN/VXLAN fabric on FRR and VyOS, built to understand the BGP EVPN control plane hands-on: MAC learning via type-2 routes, flooding and BUM handling via type-3, and prefix advertisement via type-5, with MAC-VRF isolation between tenants. A deliberate step past the day job into data-centre overlay design.</p>
+        <p class="result"><span class="stat-dot progress"></span>in progress — type-2/3 verified, type-5 next</p>
       </div>
     </div>
   </div>
