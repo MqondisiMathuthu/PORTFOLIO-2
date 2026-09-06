@@ -42,6 +42,66 @@
   setTimeout(typeChar, 500);
 })();
 
+// ---------- Impact metrics: animate on scroll into view ----------
+(function () {
+  var section = document.getElementById('impact');
+  if (!section) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var CIRC = 2 * Math.PI * 52; // gauge circumference (r=52)
+
+  function setFinal() {
+    // Jump straight to final values (reduced motion or fallback)
+    section.querySelectorAll('.gauge-metric').forEach(function (m) {
+      var v = +m.getAttribute('data-value');
+      var fill = m.querySelector('.gauge-fill');
+      if (fill) fill.style.strokeDashoffset = CIRC * (1 - v / 100);
+    });
+    section.querySelectorAll('.count').forEach(function (c) {
+      c.textContent = c.getAttribute('data-to');
+    });
+  }
+
+  function animate() {
+    // Gauges
+    section.querySelectorAll('.gauge-metric').forEach(function (m) {
+      var v = +m.getAttribute('data-value');
+      var fill = m.querySelector('.gauge-fill');
+      if (fill) requestAnimationFrame(function () {
+        fill.style.strokeDashoffset = CIRC * (1 - v / 100);
+      });
+    });
+    // Count-ups
+    section.querySelectorAll('.count').forEach(function (c) {
+      var to = +c.getAttribute('data-to');
+      var dur = 1300, start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+        c.textContent = Math.round(to * eased);
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  if (reduced) { setFinal(); return; }
+
+  if (!('IntersectionObserver' in window)) { animate(); return; }
+
+  var fired = false;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && !fired) {
+        fired = true;
+        animate();
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.35 });
+  obs.observe(section);
+})();
+
 // ---------- Mobile nav toggle ----------
 (function () {
   var toggle = document.getElementById('nav-toggle');
